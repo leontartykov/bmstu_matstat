@@ -1,0 +1,91 @@
+\chapter{Теоретическая часть}
+\section{Формулы для вычисления величин $M_{max}$ , $M_{min}$, R, $\hat\mu$, $S^2$}
+Минимальное значение выборки рассчитывается по формуле (\ref{eq:min}); максимальное -- (\ref{eq:max}). Размах выборки рассчитывается по формуле (\ref{eq:diff}); выборочное среднее -- (\ref{eq:mx}), выборочная дисперсия -- (\ref{eq:dx}).
+\begin{equation}
+	\label{eq:min}
+	M_{\min} = X_{(1)}
+\end{equation}
+\begin{equation}
+	\label{eq:max}
+	M_{\min} = X_{(n)}
+\end{equation}
+\begin{equation}
+	\label{eq:diff}
+	R = M_{\max} - M_{\min}.
+\end{equation}
+\begin{equation}
+	\label{eq:mx}
+	\hat\mu(\vec X_n) = \frac 1n \sum_{i=1}^n X_i
+\end{equation}
+\begin{equation}
+	\label{eq:dx}
+	S^2(\vec X_n) = \frac 1{n} \sum_{i=1}^n (X_i-\overline X_n)^2
+\end{equation}
+
+\section{Эмпирическая плотность и гистограмма}
+Пусть $\vec x$ -- выборка из генеральной совокупности $X$. 
+
+При большом объеме n (n > 50) этой выборки  значения $x_i$ группируют в интервальный статистический ряд. Для этого отрезок $J = [x_{(1)}, x_{(n)}]$ делят на $m$ равновеликих промежутков по формуле (\ref{eq:ji}):
+
+\begin{equation}
+	\label{eq:ji}
+	J_i = [x_{(1)} + (i - 1) \cdot \Delta,\ x_{(1)} + i \cdot \Delta), i = \overline{1; m - 1}
+\end{equation}
+Последний промежуток определяется по формуле (\ref{eq:jm}):
+\begin{equation}
+	\label{eq:jm}
+	J_{m} = [x_{(1)} + (m - 1) \cdot \Delta, x_{(n)}]
+\end{equation}
+
+Ширина каждого из таких промежутков определяется по формуле (\ref{eq:delta}).
+\begin{equation}
+	\label{eq:delta}
+	\Delta = \frac{|J|}{m} = \frac{x_{(n)} - x_{(1)}}{m}
+\end{equation}
+
+Интервальным статистическим рядом называют таблицу \ref{table:row1}:
+
+\begin{table}[ht!]
+	\captionsetup{singlelinecheck = false, justification=raggedleft}
+	\caption{Интервальный статистический ряд}
+	\centering
+	\label{table:row1}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		$J_1$ & ... & $J_i$ & ... & $J_m$ \\
+		\hline
+		$n_1$ & ... & $n_i$ & ... & $n_m$ \\
+		\hline
+	\end{tabular}
+\end{table}
+
+где $n_i$ -- количество элементов выборки $\vec x$, которые $\in J_i$.
+
+\textbf{Гистограмма} -- это график эмпирической плотности. 
+
+\textbf{Эмпирической плотностью}, отвечающей выборке $\vec x$, называют функцию:
+\begin{equation}
+	\hat f(x) =
+	\begin{cases}
+		\frac{n_i}{n \Delta}, x \in J_i, i = \overline{1; m} \\
+		0, \text{иначе} \\
+	\end{cases}
+\end{equation}
+
+где $J_i$ -- полуинтервал статистического ряда, 
+$n_i$ -- количество элементов выборки, входящих в полуинтервал, 
+$n$ -- количество элементов выборки.
+
+
+\section{Эмпирическая функция распределения}
+
+Пусть $\vec x = (x_1, ..., x_n)$ -- выборка из генеральной совокупности $X$. 
+
+Обозначим $n(t, \vec x)$ -- число элементов вектора $\vec x$, которые имеют значения меньше $t$.
+
+\textbf{Эмпирической функцией распределения} называют функцию \newline
+$F_n:$ $\mathb{R} \to \mathb{R}$, определенную как: 
+
+\begin{equation}
+	F_n(x) = \frac{n(t, \vec x)}{n}
+\end{equation}
