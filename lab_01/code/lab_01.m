@@ -10,18 +10,20 @@ endfunction
 
 function [bins, counts, count_X, delta, Xn, Y_normpdf, Y_normcdf, Y_ecdf, M_min, M_max, X_without_double] = perform_params(X)
     count_X = length(X);
-    M_max = max(X)
-    M_min = min(X)
+    M_max = max(X);
+    M_min = min(X);
     
     R = M_max - M_min;
     MX = find_MX(X, count_X);
     DX = find_DX(X, MX, count_X);
     
     m = find_m(count_X);
+    output_results(M_max, M_min, R, MX, DX, m);
     [counts, bins] = hist(X, m);
 
     delta = R / m;
     sigma = sqrt(DX);
+    
     abs_MX = abs(MX);
     M_min = M_min - abs_MX;
     M_max = M_max + abs_MX;
@@ -101,7 +103,6 @@ function [count_elem, X_graph] = count_number_elems(X, count_X, M_min, M_max)
         X_graph(j + 1) = X_without_double(i);
         j += 2;
     endfor
-    M_max
     X_graph(j) = abs(M_max);  
 endfunction
 
@@ -144,7 +145,11 @@ function plot_graphs(bins, counts, count_X, delta, Xn, Y_normpdf, Y_normcdf, Y_e
     plot(X_without_double, Y_ecdf, 'LineWidth', 1, 'Color', 'blue');
     #plot(Xn, Y_ecdf, 'LineWidth', 1, 'Color', 'blue');
     xlim([M_min, M_max]);
+endfunction
 
+function output_results(M_min, M_max, R, MX, DX, m)
+    fprintf("M_min = %f,\nM_max = %f,\nR = %f,\nMX = %f,\nDX = %f,\nm = %f\n",
+            M_min, M_max, R, MX, DX, m);
 endfunction
 
 main()
