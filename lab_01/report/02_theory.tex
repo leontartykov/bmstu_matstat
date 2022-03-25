@@ -1,6 +1,6 @@
 \chapter{Теоретическая часть}
 \section{Формулы для вычисления величин $M_{max}$ , $M_{min}$, R, $\hat\mu$, $S^2$}
-Минимальное значение выборки рассчитывается по формуле (\ref{eq:min}); максимальное -- (\ref{eq:max}). Размах выборки рассчитывается по формуле (\ref{eq:diff}); выборочное среднее -- (\ref{eq:mx}), выборочная дисперсия -- (\ref{eq:dx}).
+Минимальное значение выборки рассчитывается по формуле (\ref{eq:min}); максимальное -- (\ref{eq:max}). Размах выборки рассчитывается по формуле (\ref{eq:diff}); выборочное среднее -- (\ref{eq:mx}), исправленная выборочная дисперсия -- (\ref{eq:dx}).
 \begin{equation}
 	\label{eq:min}
 	M_{\min} = X_{(1)}
@@ -19,7 +19,7 @@
 \end{equation}
 \begin{equation}
 	\label{eq:dx}
-	S^2(\vec X_n) = \frac 1{n} \sum_{i=1}^n (X_i-\overline X_n)^2
+	S^2(\vec X_n) = \frac 1{n - 1} \sum_{i=1}^n (X_i-\overline X_n)^2
 \end{equation}
 
 \section{Эмпирическая плотность и гистограмма}
@@ -68,7 +68,7 @@
 	\hat f(x) =
 	\begin{cases}
 		\frac{n_i}{n \Delta}, x \in J_i, i = \overline{1; m} \\
-		0, \text{иначе} \\
+		0\ \ , x \not\in J \\
 	\end{cases}
 \end{equation}
 
@@ -84,8 +84,8 @@ $n$ -- количество элементов выборки.
 Обозначим $n(t, \vec x)$ -- число элементов вектора $\vec x$, которые имеют значения меньше $t$.
 
 \textbf{Эмпирической функцией распределения} называют функцию \newline
-$F_n:$ $\mathb{R} \to \mathb{R}$, определенную как: 
+$F_n: \mathbb{R} \to \mathbb{R}$, определенную как: 
 
 \begin{equation}
-	F_n(x) = \frac{n(t, \vec x)}{n}
+	F_n(t) = \frac{n(t, \vec x)}{n}
 \end{equation}
