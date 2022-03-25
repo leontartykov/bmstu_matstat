@@ -74,26 +74,24 @@ function [m] = find_m(count_X)
 endfunction
 
 function [J, count_elem_J] = calc_hist(X, M_min, M_max, delta)
-    J = M_min: delta: M_max;
-    length(J)
+    J = (M_min - delta): delta: (M_max + delta);
     count_elem_J = [];
-    j = 1;
     len_J = length(J);
     len_X = length(X);
-    for i = 1: len_J - 1
+    for i = 2: len_J - 2
         count_elem = 0;
         for j = 1: len_X
-            if ((X(j) >= J(i)) && (X(j) <= J(i + 1)))
-                count_elem += 1;
+            if ((X(j) > J(i)) || abs(X(j) - J(i)) <= 1e-3)
+                if ((i == len_J - 2) && (X(j) < J(i + 1) || (abs(X(j) - J(i + 1))) <= 1e-3))
+                    count_elem += 1;
+                elseif (X(j) < J(i + 1))
+                    count_elem += 1;
+                endif
             endif
         endfor
         count_elem_J(i) = count_elem;
     endfor
     count_elem_J(len_J) = 0;
-    fprintf("count_elem_J = %d\n", count_elem_J);
-    fprintf("len_J = %d\n", len_J);
-    fprintf("len_count_J = %d\n", length(count_elem_J));
-    disp(J);
 endfunction
 
 function [Y_normpdf] = density_ndist(Xn, MX, sigma)
@@ -115,7 +113,7 @@ function [count_elem, X_graph] = count_number_elems(X, count_X, M_min, M_max)
         temp_value = X_sort(i);
         j = 1;
         while (is_all == 0)
-            if (X_sort(i + j) == temp_value)
+            if (X_sort(i + j) == temp_value && i + j < count_X)
                 j++;
             else
                 is_all = 1;
@@ -169,11 +167,8 @@ function [Y_ecdf] = form_y_ecdf(count_elem, count_X)
 endfunction
 
 function plot_graphs(bins, counts, count_X, delta, Xn, Y_normpdf, Y_normcdf, Y_ecdf, M_min, M_max, X_without_double, J, count_elem_J)
-    fprintf("len_count = %d\n", length(count_elem_J));
-    fprintf("len_count = %d\n", length(J));
     figure;
     subplot(1, 2, 1);
-    #bar(bins, counts / (count_X * delta), "histc", 'FaceColor', 'blue');
     stairs(J, count_elem_J / (count_X * delta));
     hold on;
     plot(Xn, Y_normpdf, 'LineWidth', 3, 'Color', 'green');
