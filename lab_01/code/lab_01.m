@@ -185,7 +185,7 @@ function plot_graphs(bins, counts, count_X, delta, Xn, Y_normpdf, Y_normcdf, Y_e
 endfunction
 
 function output_results(M_min, M_max, R, MX, DX, m)
-    fprintf("M_min = %f,\nM_max = %f,\nR = %f,\nMX = %f,\nDX = %f,\nm = %f\n",
+    fprintf("M_max = %f,\nM_min = %f,\nR = %f,\nMX = %f,\nDX = %f,\nm = %f\n",
             M_min, M_max, R, MX, DX, m);
 endfunction
 
