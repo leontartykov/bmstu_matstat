@@ -1,0 +1,59 @@
+\chapter{Теоретическая часть}
+\section {Определение $\gamma$-доверительного интервала для значения параметра распределения случайной величины}
+
+Пусть: $X$ - случайная величина, закон распределения которой
+известен с точностью до неизвестного параметра $\theta$.
+
+Интервальной оценкой параметра $\theta$ уровня $\gamma$ называется пара статистик $\underline\theta(\vec X)$ и $\overline\theta(\vec X)$ таких, что $P\{\theta \in (\underline\theta(\vec X), \overline\theta(\vec X))\} = \gamma$
+
+Односторонней нижней (верхней) $\gamma$-доверительной границей для параметра $\theta$ называется статистика $\underline\theta(\vec X)$ (соответственно $\overline\theta(\vec X)$) такая, что \newline $P\{\theta > \underline\theta(\vec X)\} = \gamma$ (соответственно $P\{\theta < \overline\theta(\vec X)\} = \gamma$)
+
+\textbf{$\gamma$-доверительным интервалом} для параметра $\theta$ называется реализация (выборочное значение) интервальной оценки уровня $\gamma$ для этого параметра, т.е. интервал $(\underline{\theta}(\vec X), \overline{\theta}(\vec X))$ с детерминированными границами.
+
+\section {Формулы для вычисления границ $\gamma$-доверительного интервала для математического ожидания и дисперсии нормальной случайной величины}
+\vspace{-0.7cm}
+Пусть $\vec{X}_{n}$ — случайная выборка объема $n$ из генеральной совокупности $X$, распределенной по нормальному закону с параметрами $\mu$ и $\sigma^{2}$.
+\vspace{-0.7cm}
+\subsection{Вычисление границ $\gamma$-доверительного интервала для математического ожидания}
+\vspace{-0.7cm}
+Нижняя граница интервала для математического ожидания при известной дисперсии приведена в формуле (\ref{eq:low_mu}).
+\begin{equation}
+	\label{eq:low_mu}
+	\underline{\mu}(\vec{X}_{n}) = \overline{X}-\frac{S(\vec{X}_{n})}{\sqrt{n}}t_{1-\alpha}(n-1)
+\end{equation}
+
+Верхняя граница интервала для математического ожидания при известной дисперсии приведена в формуле (\ref{eq:high_mu}).
+\begin{equation}
+	\label{eq:high_mu}
+	\overline{\mu}(\vec{X}_{n}) = \overline{X}+\frac{S(\vec{X}_{n})}{\sqrt{n}}t_{\alpha}(n-1),
+\end{equation}
+
+\noindent где:
+\begin{itemize}
+	\item $\overline{X}$ -- среднее значение выборки;
+	\item $n$ -- число опытов;
+	\item $S(\vec{X}_{n})$ -- точечная оценка дисперсии случайной выборки $\vec{X}_{n}$;
+	\item $t_{\alpha}(n-1)$ квантиль уровня $\alpha$ для распределения Стьюдента с $n-1$ степенями свободы;
+	\item $\alpha$ -- величина, равная $\displaystyle\frac{(1-\gamma)}{2}$.
+\end{itemize}
+
+\subsection{Вычисление границ $\gamma$-доверительного интервала для дисперсии}
+\vspace{-0.7cm}
+Нижняя граница интервала для дисперсии приведена в формуле (\ref{eq:low_sigma}).
+\begin{equation}
+	\label{eq:low_sigma}
+	\underline{\sigma^{2}}(\vec{X}_{n})  =\frac{S(\vec{X}_{n})(n-1)}{h_{1-\alpha}^{n-1}}
+\end{equation}
+
+Верхняя граница интервала для дисперсии приведена в формуле (\ref{eq:high_sigma}).
+\begin{equation}
+	\label{eq:high_sigma}
+	\overline{\sigma^{2}}(\vec{X}_{n})  =\frac{S(\vec{X}_{n})(n-1)}{h_{\alpha}^{n-1}},
+\end{equation}
+
+\noindent где:
+\begin{itemize}
+	\item $n$ -- объем выборки;
+	\item $h_{\alpha}^{n-1}$ -- квантиль уровня $\alpha$ распределения $\chi^{2}$ с $n-1$ степенями свободы;
+	\item $\alpha$ -- величина, равная $\displaystyle\frac{(1-\gamma)}{2}$.
+\end{itemize}
